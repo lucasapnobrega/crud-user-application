@@ -13,7 +13,7 @@ const Header = () => {
         </div>
 
         <div className="link-container inline-block relative mr-8">
-          <Link to="/charts">User Analytics</Link>
+          <Link to="/charts">Users Analytics</Link>
           <span className="block absolute bottom-0 left-0 h-[0.15rem] bg-white transition-bar"></span>
         </div>
         

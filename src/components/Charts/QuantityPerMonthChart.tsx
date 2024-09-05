@@ -8,8 +8,6 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "../ui/chart"
 import { useUsersContext } from "../../contexts/UsersContext"
 import { useEffect, useState } from "react"
@@ -87,10 +85,7 @@ const QuantityPerMonthChart = () => {
               tickFormatter={(value) => value.toUpperCase().slice(0, 3)}
               className="font-medium"
             />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
+
             <Bar dataKey="persons" fill="hsl(220 70% 50%)" radius={8} barSize={70}>
               <LabelList
                 position="top"

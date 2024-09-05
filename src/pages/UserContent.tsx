@@ -40,7 +40,7 @@ const UserContent = () => {
         <p>Sex: {user?.sex === "male" ? "Male" : "Female"}</p>
       </div>
 
-      <div className="w-10 h-10 bg-black transition-all hover:bg-[#424242] text-white rounded-full mt-10 flex justify-center items-center absolute right-10 -top-4 cursor-pointer" onClick={() => navigate("/")}>
+      <div className="w-10 h-10 bg-black transition-all hover:bg-blackHover text-white rounded-full mt-10 flex justify-center items-center absolute right-10 -top-4 cursor-pointer" onClick={() => navigate("/")}>
         <FaChevronLeft className="text-xl" title="Voltar" />
       </div>
     </div>

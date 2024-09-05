@@ -9,12 +9,19 @@ import ModalUpdate from "./ModalUpdate"
 import ModalConfirm from "./ModalConfirm"
 import { BsPlusCircleFill } from "react-icons/bs";
 import { useUsersContext } from "../contexts/UsersContext"
+import { getCurrentPageUsers } from "../utils/pagination"
+import PaginationButtons from "./PaginationButtons"
 
 const TableUsers = () => {
   const { users, setUsers } = useUsersContext()
   const [modalEdit, setModalEdit] = useState<boolean>(false)
   const [modalConfirm, setModalConfirm] = useState<boolean>(false)
-  const [selectedUser, setSelectedUser] = useState<User>({ name: "", age: 0, email: "", profileImage: "" })
+  const [selectedUser, setSelectedUser] = useState<User>({ name: "", age: 0, email: "", profileImage: "", height: 0, sex: "" ,createdAt: "" })
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10
+  const totalUsers = users?.length || 0
+  const totalPages = Math.ceil(totalUsers / itemsPerPage)
 
   const handleButtonClick = (isEdit: boolean, user: User) => {
     setSelectedUser(user)
@@ -32,7 +39,7 @@ const TableUsers = () => {
       </Link>
 
       {users.length > 0 ? (
-        <Table className="text-center mt-10 border border-gray-400 rounded">
+        <Table className="text-center mt-6 border border-gray-400 rounded">
           <TableHeader>
             <TableRow className="border border-gray-400 text-[1rem]">
               <TableHead className="w-[25%] text-center border-y border-gray-400 py-3">Name</TableHead>
@@ -43,8 +50,8 @@ const TableUsers = () => {
           </TableHeader>
           
           <TableBody>
-            {users && users.length > 0 && users.map((user, index) => (
-              <TableRow key={user.id} className={`border border-gray-400 ${index % 2 === 0 ? 'bg-white' : 'bg-transparent'}`}>
+            {users && users.length > 0 && getCurrentPageUsers(currentPage, itemsPerPage, users).map((user, index) => (
+              <TableRow key={index} className={`border border-gray-400 ${index % 2 === 0 ? 'bg-white' : 'bg-transparent'}`}>
                 <TableCell className="border-y border-gray-400 py-3">{user.name}</TableCell>
                 <TableCell className="border-y border-gray-400 py-3">{user.age}</TableCell>
                 <TableCell className="border-r border-gray-400 py-3">{user.email}</TableCell>
@@ -60,6 +67,8 @@ const TableUsers = () => {
       ) : (
         <p className="mt-12 font-semibold italic text-center text-lg">Sem usuário cadastrado. Cadastre clicando no botão acima!</p>
       )}
+
+      <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
 
       {modalEdit && (
         <ModalUpdate isOpen={modalEdit} onClose={() => setModalEdit(false)} user={selectedUser} setUsers={setUsers} />
