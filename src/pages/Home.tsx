@@ -1,9 +1,9 @@
-import FormUsers from "../components/TableUsers"
+import TableUsers from "../components/TableUsers"
 
 const Home = () => {
   return (
     <>
-      <FormUsers />
+      <TableUsers />
     </>
   )
 }

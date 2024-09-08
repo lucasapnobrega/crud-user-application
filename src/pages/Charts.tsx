@@ -3,20 +3,23 @@ import { IoStatsChart } from "react-icons/io5";
 import SexChart from "../components/Charts/SexChart";
 import HeightChart from "../components/Charts/HeightChart";
 import QuantityPerMonthChart from "../components/Charts/QuantityPerMonthChart";
+import WeightChart from "../components/Charts/WeightChart";
 
 const Charts = () => {
   return (
     <div>
-      <h2 className="text-[1.95rem] font-semibold mb-12 flex items-center gap-2">
+      <h2 className="text-[1.95rem] font-semibold mb-8 flex items-center gap-2">
         Charts <IoStatsChart className="text-[1.55rem]" />
       </h2>
 
-      <div className="flex flex-wrap justify-between gap-12">
+      <div className="flex flex-wrap justify-between gap-6 mx-auto">
         <AgeChart />
 
         <SexChart />
 
         <HeightChart />
+
+        <WeightChart />
       </div>
 
       <div className="w-full mt-14">

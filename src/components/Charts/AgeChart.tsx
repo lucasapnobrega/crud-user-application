@@ -72,29 +72,36 @@ const AgeChart = () => {
   ]
 
   return (
-    <Card className="w-[23rem] bg-white">
+    <Card className="2xl:flex-1 md:w-[48%] w-[100%] bg-white">
       <CardHeader className="items-center pb-0">
         <CardTitle>Age Range</CardTitle>
       </CardHeader>
       
       <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[300px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              content={<ChartTooltipContent nameKey="interval" hideLabel />}
-            />
+        {users && users.length === 0 ? (
+          <div className="text-center text-gray-500 -mt-[15%] flex justify-center items-center h-full">
+            Nenhum dado disponível
+          </div>
+        ) : (
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[300px]"
+          >
+            <PieChart>
+              <ChartTooltip
+                content={<ChartTooltipContent nameKey="interval" hideLabel />}
+              />
 
-            <Pie data={chartData} dataKey="persons" />
+              <Pie data={chartData} dataKey="persons" />
 
-            <ChartLegend
-              content={<ChartLegendContent nameKey="interval" />}
-              className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
-            />
-          </PieChart>
-        </ChartContainer>
+              <ChartLegend
+                content={<ChartLegendContent nameKey="interval" />}
+                className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
+              />
+            </PieChart>
+          </ChartContainer>
+        )}
+        
       </CardContent>
     </Card>
   )

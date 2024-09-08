@@ -99,10 +99,20 @@ const Create = () => {
           {...register("height", { valueAsNumber: true })}
           type="number"
           label="Height"
-          placeholder="Enter your height"
+          placeholder="Enter your height (x.xx)"
           name="height"
           error={errors.height}
           step={0.01}
+        />
+
+        <Input 
+          {...register("weight", { valueAsNumber: true })}
+          type="number"
+          label="Weight"
+          placeholder="Enter your weight"
+          name="weight"
+          error={errors.weight}
+          step={1}
         />
 
         <Select

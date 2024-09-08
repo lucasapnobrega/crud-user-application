@@ -1,12 +1,13 @@
 import { z } from "zod";
 
 export const userSchema = z.object({
-  name: z.string().min(3, "Insira o nome do usuário"),
-  age: z.coerce.number({ message: "Insira a idade do usuário" }),
-  email: z.string().email("Insira um e-mail válido"),
-  height: z.coerce.number({ message: "Insira a altura do usuário" }),
+  name: z.string().min(3, "Enter the user's name"),
+  age: z.coerce.number({ message: "Enter the user's age" }),
+  email: z.string().email("Enter a valid email address"),
+  height: z.coerce.number({ message: "Enter the user's height" }),
+  weight: z.coerce.number({ message: "Enter the user's weight" }),
   sex: z.string().refine(value => value !== "", {
-    message: 'Selecione um sexo'
+    message: 'Select a gender'
   }),
   profileImage: z.any(),
 })

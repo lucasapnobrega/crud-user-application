@@ -26,7 +26,7 @@ export const UsersProvider = ({ children }: Props) => {
         return 
       }
 
-      setUsers(result)
+      setUsers(result.reverse())
     })
   }, [])
 

@@ -18,6 +18,7 @@ import { convertFileToBase64 } from "../utils/convertFileToBase64";
 import { FaCameraRetro  } from "react-icons/fa";
 import imgDefault from '../assets/user-default.jpg'
 import { Select } from "./Select";
+import { FaUserEdit } from "react-icons/fa";
 
 interface Props {
   isOpen: boolean;
@@ -34,7 +35,7 @@ const ModalUpdate = ({ isOpen, onClose, user, setUsers }: Props) => {
     setValue
   } = useForm<User>({
     resolver: zodResolver(userSchema),
-    defaultValues: { name: user?.name, age: user?.age, email: user?.email, sex: user?.sex }
+    defaultValues: { name: user.name, age: user.age, email: user.email, sex: user.sex, height: user.height, weight: user.weight  }
   })
   const [image, setImage] = useState<string>(user.profileImage)
   const ref = useRef<HTMLDivElement>(null)
@@ -75,8 +76,10 @@ const ModalUpdate = ({ isOpen, onClose, user, setUsers }: Props) => {
 
   return (
     <Dialog open={isOpen}>
-      <DialogContent className="bg-white !rounded-[0.5rem]" ref={ref} aria-describedby={undefined}>
-        <DialogTitle className="mb-4 text-xl tracking-wider text-[#083A50]">Update User</DialogTitle>
+      <DialogContent className="bg-white !rounded-[0.5rem] max-h-[80vh] overflow-y-scroll" ref={ref} aria-describedby={undefined} >
+        <DialogTitle className="mb-4 text-[1.4rem] tracking-wider text-[#083A50] flex justify-center items-center gap-2">
+          Update User <FaUserEdit className="text-2xl" />
+        </DialogTitle>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <img
@@ -125,6 +128,30 @@ const ModalUpdate = ({ isOpen, onClose, user, setUsers }: Props) => {
             error={errors.email}
           />
 
+          <Input
+            {...register("height", { valueAsNumber: true })}
+            type="number"
+            label="Height"
+            name="height"
+            error={errors.height}
+          />
+
+          <Input
+            {...register("weight", { valueAsNumber: true })}
+            type="number"
+            label="Weight"
+            name="weight"
+            error={errors.weight}
+          />
+
+          <Input
+            {...register("age", { valueAsNumber: true })}
+            type="number"
+            label="Age"
+            name="age"
+            error={errors.age}
+          />
+
           <Select
             {...register("sex")}
             label="Sex"
@@ -138,7 +165,7 @@ const ModalUpdate = ({ isOpen, onClose, user, setUsers }: Props) => {
             <option key="female" value="female">Female</option>
           </Select>
 
-          <button type="submit" className="bg-black text-white py-2.5 mt-5 rounded">Update</button>
+          <button type="submit" className="bg-black text-white py-2.5 mt-5 rounded hover:bg-blackHover">Update</button>
         </form>
 
         <IoCloseOutline className="absolute top-2 right-2 text-4xl cursor-pointer" onClick={onClose} />
