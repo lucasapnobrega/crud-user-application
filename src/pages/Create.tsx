@@ -64,7 +64,7 @@ const Create = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center mt-[6rem]">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white w-[30rem] py-6 px-4 flex flex-col gap-4 rounded-[0.3rem]" id="createForm">
         <h2 className="font-semibold text-2xl mb-4 flex justify-center items-center gap-3 text-[#083A50]">
           Create User Form <FaUser/>

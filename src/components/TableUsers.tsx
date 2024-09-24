@@ -85,7 +85,7 @@ const TableUsers = () => {
   }, [filterBy])
   
   return (
-    <div className="max-w-[68rem] mx-auto">
+    <div className="max-w-[68rem] mx-auto my-10">
       <div className="flex justify-between">
         <Link to={"/create"} className="bg-green-600 text-white rounded py-2.5 flex justify-center items-center gap-2 w-[11rem] transition-all hover:bg-green-700">
           Create User <BsPlusCircleFill />

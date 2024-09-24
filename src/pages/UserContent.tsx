@@ -27,17 +27,17 @@ const UserContent = () => {
     }
   }, [id])
 
-  console.log(user)
-
   return (
     <div className="flex justify-center items-center gap-12 bg-white p-8 w-[50rem] rounded-xl relative mx-auto" id="createForm">
       <img src={user?.profileImage || imgDefault} alt="Imagem de perfil" className="rounded-full w-[16rem] aspect-square object-cover" />
 
       <div className="flex flex-col gap-2">
-        <h3 className="font-semibold">{user?.name}</h3>
-        <p>{user?.age} anos</p>
-        <p>{user?.email}</p>
-        <p>Sex: {user?.sex === "male" ? "Male" : "Female"}</p>
+        <h3 className="font-bold italic text-2xl mb-4">{user?.name}</h3>
+        <p><span className="font-semibold">Age</span>: {user?.age} years</p>
+        <p><span className="font-semibold">Email: </span>{user?.email}</p>
+        <p><span className="font-semibold">Sex</span>: {user?.sex === "male" ? "Male" : "Female"}</p>
+        <p><span className="font-semibold">Height</span>: {user?.height}m</p>
+        <p><span className="font-semibold">Weight</span>: {user?.weight}kg</p>
       </div>
 
       <div className="w-10 h-10 bg-black transition-all hover:bg-blackHover text-white rounded-full mt-10 flex justify-center items-center absolute right-10 -top-4 cursor-pointer" onClick={() => navigate("/")}>
